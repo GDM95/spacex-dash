@@ -47,20 +47,14 @@ const Toolbar = props => {
                             </div>
 
 
-
-                            <div className="dropdown">
+                            {/* <div className="dropdown">
                                 <li><Link to='/rockets' className="navLink">Rockets</Link></li>
-                                {/* <div className="dropdown-content">
-                                    <a href="/about#about-banner">Who We Are</a>
-                                    <a href="/about#investment-platform">Our Investment Platform</a>
-                                    <a href="/about#leadership">Meet Our Leadership</a>
-                                </div> */}
-                            </div>
+                            </div> */}
 
                             
-                            <li><Link to='/careers' className="navLink">News</Link></li>
+                            {/* <li><Link to='/careers' className="navLink">News</Link></li> */}
 
-                            <li><Link to='/contact' className="navLink">Contact</Link></li>
+                            {/* <li><Link to='/contact' className="navLink">Contact</Link></li> */}
 
 
                             {/* <div className="dropdown">

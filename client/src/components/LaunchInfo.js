@@ -20,7 +20,6 @@ const upArrow = () =>
 
 
 const LaunchInfo = (props) => {
-    //window.scrollTo(0, 0)
     const launchId = props.match.params.flightNo
     const [result, setResult] = useState(null);
     const myRef = useRef(null)
@@ -52,6 +51,7 @@ const LaunchInfo = (props) => {
 
 
     useEffect(() => {
+        window.scrollTo(0, 0)
         console.log(launchId)
         async function fetchData() {
             try {

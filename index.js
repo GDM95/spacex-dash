@@ -43,22 +43,12 @@ app.post('/api/launches/upcoming', (req, res, next) => {
        .catch(err => res.secn(err));
 });
 
-
-/* router.post('/api/launches/single', function(req, res, next) {
-    console.log("param: ", req.body)
-    axios.post(LAUNCHES_QUERY, pastLaunchQuery(req.body.flight_number))
-       .then(resp => res.json(resp.data))
-       .catch(err => res.secn(err));
-}); */
-
-
 app.post('/api/launches/single', (req, res, next) => {
     console.log("param: ", req.body)
     axios.post(LAUNCHES_QUERY, pastLaunchQuery(req.body.flight_number))
        .then(resp => res.json(resp.data))
        .catch(err => res.secn(err));
 });
-
 
 // The "catchall" handler: for any request that doesn't
 // match one above, send back React's index.html file.
