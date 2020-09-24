@@ -1,8 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react';
+import RocketInfo from './RocketInfo'
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import ExpandLessIcon from '@material-ui/icons/ExpandLess';
 import LaunchImageSlider from './LaunchImageSlider/LaunchImageSlider'
 import Collapsible from 'react-collapsible';
+import { HashLink as Link } from 'react-router-hash-link';
 import axios from 'axios';
 
 
@@ -35,7 +37,7 @@ const LaunchInfo = (props) => {
 
     const rocketTrigger = () =>
     <div className='collapsible-section-trigger'>
-        <h1 className="collapsible-title">Rocket</h1>
+        <h1 className="collapsible-title">Rocket Details</h1>
         { rocketExpanded ? upArrow() : downArrow() }
     </div>
 
@@ -78,10 +80,17 @@ const LaunchInfo = (props) => {
                 <div id="launch-banner">
                         <h2 id="launch-title">{result.name}</h2>
                         <a id="watch-launch-button" href={result.links.webcast} target="_blank" rel="noopener noreferrer">View Launch</a>
-                        <ExpandMoreIcon onClick={executeScroll} style={{ fontSize: 65, position: 'absolute', bottom: 25}}/>
+                        <div style={{ fontSize: 65, position: 'absolute', bottom: 25 }}>
+                            <Link id="button-link" 
+                            to={`${window.location.pathname}#details`} 
+                            style={{ color: 'white' }}
+                            /* scroll={el => el.scrollIntoView({ behavior: 'instant', block: 'end' })} */>
+                                <ExpandMoreIcon onClick={executeScroll} style={{ fontSize: 65 }}/>
+                            </Link>
+                        </div>
                 </div>
 
-                <a ref={myRef}/>
+                <a id="details" ref={myRef}/>
                 <Collapsible open onOpening={toggleDetailsOpen} onClosing={toggleDetailsOpen} trigger={detailsTrigger()} className="collapsible-section" transitionTime={350} >
                     <div id="launch-details">
                         <div id='launch-info-text-grid'>
@@ -102,19 +111,11 @@ const LaunchInfo = (props) => {
                 </Collapsible>
 
 
-            
-
                 <Collapsible onOpening={toggleRocketOpen} onClosing={toggleRocketOpen} trigger={rocketTrigger()} className="collapsible-section" transitionTime={350}>
-                    {/* <RocketInfo rocket={result.rocket}/> */}
+                    <RocketInfo rocket={result.rocket}/>
                 </Collapsible>
                
 
-               
-                {/* <Collapsible trigger={<h1 className="section-title collapsible-title">Gallery</h1>} className="collapsible-section" transitionTime={350}>
-                    <div id="launch-images">
-                            <LaunchImageSlider images={result.links.flickr.original} heading="test" />
-                    </div>
-                </Collapsible> */}
 
                 { result.links.flickr.original.length > 0 ?
                     <>

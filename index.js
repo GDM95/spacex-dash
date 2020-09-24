@@ -1,6 +1,8 @@
 const express = require('express');
 const path = require('path');
 const axios = require('axios').default;
+const router = express.Router();
+
 const generatePassword = require('password-generator');
 
 
@@ -12,7 +14,7 @@ const app = express();
 
 // Serve static files from the React app
 app.use(express.static(path.join(__dirname, 'client/build')));
-
+app.use(express.json()); // to support JSON-encoded bodies (POST params)
 
 // Put all API endpoints under '/api'
 app.get('/api/passwords', (req, res) => {
@@ -40,6 +42,15 @@ app.post('/api/launches/upcoming', (req, res, next) => {
        .then(resp => res.send(resp.data))
        .catch(err => res.secn(err));
 });
+
+
+/* router.post('/api/launches/single', function(req, res, next) {
+    console.log("param: ", req.body)
+    axios.post(LAUNCHES_QUERY, pastLaunchQuery(req.body.flight_number))
+       .then(resp => res.json(resp.data))
+       .catch(err => res.secn(err));
+}); */
+
 
 app.post('/api/launches/single', (req, res, next) => {
     console.log("param: ", req.body)
