@@ -21,7 +21,7 @@ const Home = props => {
 
                 {/* <RoadsterTracker /> */}
 
-                {/* <TweetFeed /> */}
+                <TweetFeed />
                 
 
                 <Crew />

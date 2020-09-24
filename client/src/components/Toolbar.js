@@ -57,12 +57,7 @@ const Toolbar = props => {
                                 </div> */}
                             </div>
 
-                            
-                            <li><Link to='/careers' className="navLink">News</Link></li>
-
-                            <li><Link to='/contact' className="navLink">Contact</Link></li>
-
-
+                        
                             {/* <div className="dropdown">
                                 <Link to='/residents' className="navLink dropbtn">Residents</Link>
                                 <div className="dropdown-content">

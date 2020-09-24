@@ -51,19 +51,6 @@ const RocketInfo = (props) => {
                     }
                 </div>
             </div>
-            {/* <div class="info-grid">
-                <div class="info-grid-item">Name</div>
-                <div class="info-grid-item">{rocket.name}</div>
-                <div class="info-grid-item">Weight (kg)</div>  
-                <div class="info-grid-item">{rocket.mass.kg}</div>
-                <div class="info-grid-item">Weight (lb)</div>  
-                <div class="info-grid-item">{rocket.mass.lb}</div>
-                <div class="info-grid-item">5</div>
-                <div class="info-grid-item">6</div>  
-                <div class="info-grid-item">7</div>
-                <div class="info-grid-item">8</div>
-                <div class="info-grid-item">9</div>  
-            </div> */}
         </section>
     )
     

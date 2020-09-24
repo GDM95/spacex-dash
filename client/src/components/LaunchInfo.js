@@ -20,7 +20,7 @@ const upArrow = () =>
 
 
 const LaunchInfo = (props) => {
-    //window.scrollTo(0, 0)
+    window.scrollTo(0, 0)
     const launchId = props.match.params.flightNo
     const [result, setResult] = useState(null);
     const myRef = useRef(null)

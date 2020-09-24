@@ -1,73 +1,43 @@
-import React from 'react';
+import React, { Component, useEffect, useState } from 'react';
 import { TransitionGroup } from 'react-transition-group';
 import io from "socket.io-client";
 import TweetCard from './TweetCard';
 
 
-class TweetFeed extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { items: [], searchTerm: "JavaScript" };
+const TweetFeed = (props) => {
+  
+  useEffect(() => {
+    var socket = io('http://localhost:80');
 
-    this.handleChange = this.handleChange.bind(this);
-    this.handleKeyPress = this.handleKeyPress.bind(this);
-    this.handleResume = this.handleResume.bind(this);
-    this.handlePause = this.handlePause.bind(this);
-  }
+    socket.on('tweets', function (data) {
+        //var div = document.getElementById("news-list");
+        console.log("Rendering tweets : ",data);
+  
+        /* for(var i = 0;i < data.length;i++){
+            var newsItem = data[i];
+            console.log(newsItem)
+        } */
+    });   
+  })
 
-  handleChange(event) {
-    this.setState({ searchTerm: event.target.value });
-  }
+  return (
+    <div>
+      <p>Test</p>
+    </div>
+  )
 
-  handleKeyPress(event) {
-    if (event.key === 'Enter') {
-      this.handleResume();
-    }
-  }
-
-  handleResume() {
-    let term = this.state.searchTerm;
-    fetch("/setSearchTerm",
-      {
-        method: "POST",
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ term })
-      })
-  }
-
-  handlePause(event) {
-    fetch("/pause",
-      {
-        method: "POST",
-        headers: {
-          'Content-Type': 'application/json'
-        }
-      })
-  }
-
-componentDidMount() {
-  /* const socket = io();
-
-  socket.on('connect', () => {
-    console.log("Socket Connected");
-    socket.on("tweets", data => {
-      console.info(data);
-      let newList = [data].concat(this.state.items.slice(0, 15));
-      this.setState({ items: newList });
-    });
-  });
-  socket.on('disconnect', () => {
-    socket.off("tweets")
-    socket.removeAllListeners("tweets");
-    console.log("Socket Disconnected");
-  }); */
 }
 
+export default TweetFeed;
 
-  render() {
-    let items = this.state.items;
+
+
+
+
+
+/* 
+
+let items = this.state.items;
 
     let itemsCards = <TransitionGroup
       transitionName="example"
@@ -129,11 +99,5 @@ componentDidMount() {
         </div>
       </div>
     );
-  }
-}
 
-const controlStyle = {
-  marginRight: "5px"
-};
-
-export default TweetFeed;
+*/
