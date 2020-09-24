@@ -1,6 +1,8 @@
 const express = require('express');
 const path = require('path');
 const axios = require('axios').default;
+const generatePassword = require('password-generator');
+
 
 const { pastLaunchQuery, upcomingLaunchesQueryMin, pastLaunchesQueryMin } = require('./queries/launches')
 const LAUNCHES_QUERY = 'https://api.spacexdata.com/v4/launches/query'
@@ -14,9 +16,17 @@ app.use(express.static(path.join(__dirname, 'client/build')));
 
 // Put all API endpoints under '/api'
 app.get('/api/passwords', (req, res) => {
-  const count = 5;
+    const count = 5;
 
-  console.log(`Sent ${count} passwords`);
+    // Generate some passwords
+    const passwords = Array.from(Array(count).keys()).map(i =>
+      generatePassword(12, false)
+    )
+  
+    // Return them as json
+    res.json(passwords);
+  
+    console.log(`Sent ${count} passwords`);
 });
 
 app.post('/api/launches/past', (req, res, next) => {
