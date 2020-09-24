@@ -19,25 +19,6 @@ app.get('/api/passwords', (req, res) => {
   console.log(`Sent ${count} passwords`);
 });
 
-app.post('/api/launches/past', (req, res, next) => {
-    axios.post(LAUNCHES_QUERY, pastLaunchesQueryMin)
-       .then(resp => res.send(resp.data))
-       .catch(err => res.secn(err));
-});
-
-app.post('/api/launches/upcoming', (req, res, next) => {
-    axios.post(LAUNCHES_QUERY, upcomingLaunchesQueryMin)
-       .then(resp => res.send(resp.data))
-       .catch(err => res.secn(err));
-});
-
-app.post('/api/launches/single', (req, res, next) => {
-    console.log("param: ", req.body)
-    axios.post(LAUNCHES_QUERY, pastLaunchQuery(req.body.flight_number))
-       .then(resp => res.json(resp.data))
-       .catch(err => res.secn(err));
-});
-
 
 // The "catchall" handler: for any request that doesn't
 // match one above, send back React's index.html file.
