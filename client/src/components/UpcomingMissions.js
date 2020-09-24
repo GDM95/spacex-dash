@@ -34,7 +34,6 @@ const UpcomingMissions = props => {
     }
 
 
-
     useEffect(() => {
       
     }, [activeSlide]);

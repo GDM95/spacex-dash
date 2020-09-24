@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from 'react';
-import RocketInfo from './RocketInfo'
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import ExpandLessIcon from '@material-ui/icons/ExpandLess';
 import LaunchImageSlider from './LaunchImageSlider/LaunchImageSlider'
@@ -54,11 +53,6 @@ const LaunchInfo = (props) => {
         console.log(launchId)
         async function fetchData() {
             try {
-                /* const response = await getLaunchById(launchId);
-                console.log("resp: ", response)
-
-                setResult(response); */
-
                 const resp = await axios.post('/api/launches/single', {
                         'flight_number': launchId
                 }).then(response => {
@@ -141,8 +135,6 @@ const LaunchInfo = (props) => {
         <section id="launch-info-container">
             <div id="launch-banner">
             </div>
-
-            <p>test</p>
         </section>
     )
     
